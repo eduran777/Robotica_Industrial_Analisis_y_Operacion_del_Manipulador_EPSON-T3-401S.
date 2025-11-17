@@ -4,13 +4,18 @@
 <img src="Imagenes/logo_3.png" alt="UNAL" width="600"/>
 </p>
 
+<p align="center">
+<img src="Imagenes/logo_3.png" alt="UNAL" width="600"/>
+</p>
+
 ### Autores:  
-\<Nombre 1\>  
-\<Nombre 2\>  
+Esteban Durán Jiménez  
+Ana María Orozco Reyes  
 
 **FACULTAD DE INGENIERÍA**  
 **ROBÓTICA**  
 **2025-II**
+
 
 ---
 
