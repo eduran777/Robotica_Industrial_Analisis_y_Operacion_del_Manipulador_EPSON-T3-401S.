@@ -4,9 +4,7 @@
 <img src="Imagenes/logo_3.png" alt="UNAL" width="600"/>
 </p>
 
-<p align="center">
-<img src="Imagenes/logo_3.png" alt="UNAL" width="600"/>
-</p>
+
 
 ### Autores:  
 Esteban Durán Jiménez  
