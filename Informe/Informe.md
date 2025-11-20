@@ -14,31 +14,6 @@ Ana María Orozco Reyes
 **ROBÓTICA**  
 **2025-II**
 
-
----
-
-## Introducción
-
-
-
----
-
-## Objetivos
-
-
-
----
-
-## Resultados de aprendizaje
-
-
-
----
-
-## Equipos, materiales y software
-
-
-
 ---
 
 ## Desarrollo experimental
