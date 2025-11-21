@@ -474,6 +474,12 @@ Esta combinación permitió evaluar no solo el desempeño físico del robot EPSO
 
 
 ### 8. Diseño técnico del gripper neumático por vacío
+<p align="center">
+<img src="Imagenes/logo_3.png" alt="UNAL" width="600"/>
+</p>
+<p align="center">
+<img src="Imagenes/logo_3.png" alt="UNAL" width="600"/>
+</p>
 
 
 
