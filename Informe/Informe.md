@@ -547,7 +547,10 @@ En conjunto, el diseño mecánico del gripper responde a los requerimientos de *
 ---
 
 ### 9. Diagrama de flujo de la rutina de movimiento de huevos (patrón de caballo)
-
+<p align="center">
+  <img src="Imagenes/dflujo.png" alt="Plano de planta de UNAL" width="600"/>
+</p>
+<p align="center"><em>Diagrama de flujo</em></p>
 
 
 ---
