@@ -588,9 +588,17 @@ Las posiciones iniciales mostradas anteriormente se eligieron teniendo en cuenta
 
 ---
 
-### 11. Código desarrollado en EPSON RC+ 7.0 (anexo)
+### 11.Descripción del programa de paletizado intercalado en SPEL+
 
+El fragmento de código presentado está escrito en **SPEL+**, lenguaje propio del entorno EPSON RC+, y tiene como objetivo ejecutar una rutina de **paletizado intercalado de dos huevos** sobre una cubeta, utilizando el robot EPSON T3. Para ello se definen dos trayectorias tipo “caballo de ajedrez”: una asociada al huevo 1 (secuencia P1) y otra al huevo 2 (secuencia P2.2). El movimiento del robot alterna de manera sistemática entre ambas secuencias, garantizando que se visiten todas las posiciones de la cubeta sin repeticiones.
 
+En la parte superior del programa se declara una variable global entera (`Global Integer i`), reservada para futuros usos, y se define la función `main`, que actúa como punto de entrada del ciclo de paletizado. En `main` se realiza la **inicialización del manipulador**: se activan los motores (`Motor On`), se selecciona potencia alta (`Power High`), se fijan aceleración y velocidad al 100 % (`Accel 100, 100` y `Speed 100`) y se lleva el robot a la posición de referencia (`Home`). A continuación, se activa la salida digital `Out_9`, que controla el gripper de vacío, y se invoca la función `Paletizado_01`, donde se encuentra la lógica de la trayectoria.
+
+La función `Paletizado_01` comienza documentando, en forma de comentarios, los **pares de puntos** que definen cada salto de las trayectorias P2.2 y P1. Cada par `(A,B)` representa un movimiento desde la posición A hasta la posición B siguiendo el patrón de un caballo de ajedrez sobre la matriz de la cubeta. Estos puntos corresponden a posiciones previamente enseñadas en EPSON RC+ (por ejemplo, `Punto3`, `Punto17`, `Punto30`, etc.) y se referencian en el código mediante instrucciones de movimiento tipo `Jump`, que realizan desplazamientos rápidos punto a punto sin imponer una trayectoria cartesiana específica.
+
+La estructura interna de `Paletizado_01` está organizada en 37 bloques numerados (`' --- 1`, `' --- 2`, …, `' --- 37`), cada uno de los cuales implementa **dos movimientos consecutivos**: primero un salto de la trayectoria P2.2 y luego un salto de la trayectoria P1. En cada salto se sigue el mismo esquema: el robot se desplaza al punto de destino del huevo actual (`Jump PuntoA`), desactiva la ventosa para depositar el huevo (`Off Out_9`), se traslada al siguiente punto de origen (`Jump PuntoB`) y vuelve a activar la ventosa para tomar el siguiente huevo (`On Out_9`). De este modo, la salida `Out_9` funciona como señal de toma y liberación, perfectamente sincronizada con el cambio de puntos.
+
+Finalmente, los últimos bloques cierran el recorrido de ambas trayectorias, retornando el huevo 1 al punto `Origen` y el huevo 2 al punto `Punto30`, con lo cual se completa un **ciclo cerrado de paletizado**. El resultado es una secuencia determinista en la cual el robot recorre de forma intercalada todas las posiciones definidas para ambos huevos, manteniendo una lógica clara de activación y desactivación del gripper y respetando la planificación geométrica impuesta por el patrón tipo caballo. Esta implementación explícita, basada en la enumeración de todos los saltos mediante instrucciones `Jump`, facilita el análisis, la depuración y la trazabilidad del proceso dentro del contexto del laboratorio académico.
 
 ---
 
