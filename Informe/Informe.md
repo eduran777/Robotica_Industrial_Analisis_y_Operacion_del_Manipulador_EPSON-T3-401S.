@@ -476,13 +476,16 @@ Esta combinación permitió evaluar no solo el desempeño físico del robot EPSO
 ### 8. Diseño técnico del gripper neumático por vacío
 
 <p align="center">
-<img src="Imagenes/gripperISO.jpeg" alt="UNAL" width="600"/>
+  <img src="/mnt/data/gripperISO.jpeg" alt="Isométrico del gripper" width="600"/>
+  <br>
+  <em>Isométrico del diseño del gripper.</em>
 </p>
-Isometrico del diseño del gripper
+
 <p align="center">
-<img src="Imagenes/PlanoGripper.jpeg" alt="UNAL" width="600"/>
+  <img src="/mnt/data/PlanoGripper.jpeg" alt="Plano del gripper" width="600"/>
+  <br>
+  <em>Plano del diseño del gripper.</em>
 </p>
-Plano del diseño del gripper
 
 ### Descripción del diseño mecánico del gripper
 
