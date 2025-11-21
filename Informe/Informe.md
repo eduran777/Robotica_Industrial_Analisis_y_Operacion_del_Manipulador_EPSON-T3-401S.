@@ -45,7 +45,32 @@ Los tres robots evaluados presentan enfoques claramente diferenciados en funció
 En contraste, el EPSON T3-401S, al ser un robot tipo SCARA con cuatro grados de libertad, está optimizado para movimientos planos rápidos y altamente repetitivos. Su diseño prioriza la velocidad y la precisión en tareas de corto alcance, como el pick & place y el ensamblaje ligero, donde la repetibilidad y los tiempos de ciclo resultan críticos. Si bien presenta limitaciones en comparación con los robots articulados en términos de flexibilidad espacial y capacidad de carga, su desempeño es superior en aplicaciones de alta cadencia dentro de celdas compactas. En conjunto, la comparación evidencia cómo cada robot responde a necesidades industriales específicas, reafirmando que la selección óptima depende del equilibrio requerido entre alcance, precisión, velocidad y complejidad de movimiento.
 
 ---
-### 2. Cuadro comparativo de características técnicas del Motoman MH6, ABB IRB 140 y EPSON T3-401S
+### 2. Diferencias entre los tipos de trayectorias en EPSON RC+ 7.0
+
+El software **EPSON RC+ 7.0** ofrece distintos tipos de trayectorias que determinan cómo el robot interpola su movimiento entre puntos programados. Estas trayectorias influyen directamente en la precisión geométrica, la velocidad de ejecución, la seguridad operacional y el comportamiento dinámico del robot durante su desplazamiento.
+
+### Cuadro comparativo de tipos de trayectoria
+
+| Tipo de trayectoria | Comando en EPSON RC+ | Descripción | Control del recorrido | Ventajas | Desventajas | Aplicaciones típicas |
+|--------------------|------------------------|-------------|------------------------|----------|-------------|----------------------|
+| **Articulada (Joint)** | `Move` | El robot se desplaza optimizando el movimiento de sus ejes articulares, sin garantizar que el efector final siga una línea recta en el espacio. | Bajo control cartesiano, alto control articular | Mayor velocidad y eficiencia, menor tiempo de ciclo | Trayectoria impredecible en el espacio | Movimientos generales entre puntos, transferencia rápida |
+| **Lineal** | `MoveL` | El efector final se desplaza siguiendo una línea recta en el espacio cartesiano entre dos puntos. | Alto control geométrico | Mayor precisión espacial y predictibilidad | Menor velocidad, mayor carga computacional | Soldadura, ensamblaje, inserción de piezas |
+| **Circular / Arco** | `Arc` | Movimiento curvo definido por un punto intermedio y un punto final, generando un arco controlado. | Control geométrico curvo | Trayectorias suaves y continuas | Programación más compleja | Trazado de contornos, procesos curvos |
+| **Salto** | `Jump` | Movimiento que combina desplazamiento horizontal con elevación automática en Z para evitar colisiones. | Control limitado del camino | Reduce riesgo de choque, rápido | No mantiene trayectoria precisa | Pick & place, paletizado |
+| **Directo** | `Go` | Movimiento simple hacia un punto, sin gestión avanzada de trayectoria intermedia. | Muy bajo control | Simplicidad y rapidez | Menor seguridad y control | Posicionamiento básico |
+
+---
+
+### Análisis comparativo
+
+Los distintos tipos de trayectorias disponibles en EPSON RC+ 7.0 permiten adaptar el comportamiento del robot a los requerimientos específicos de cada proceso. La trayectoria **articulada (Move)** prioriza la optimización del movimiento de los ejes, resultando eficiente en términos de tiempo, aunque sacrifica precisión en el camino recorrido por el efector final.
+
+Las trayectorias **lineales (MoveL)** y **circulares (Arc)** proporcionan un control preciso del recorrido espacial, siendo esenciales en procesos donde la geometría de la trayectoria influye directamente en la calidad del resultado, como en soldadura o ensamblaje de precisión.
+
+El movimiento tipo **Jump** se orienta a tareas repetitivas de manipulación, priorizando la seguridad mediante elevación automática para evitar colisiones, mientras que el comando **Go** constituye una opción básica para movimientos rápidos sin requerimientos geométricos estrictos.
+
+En conclusión, la selección del tipo de trayectoria debe realizarse considerando el equilibrio entre velocidad, precisión y seguridad, en función de las exigencias de la aplicación industrial específica.
+
 
 
 
