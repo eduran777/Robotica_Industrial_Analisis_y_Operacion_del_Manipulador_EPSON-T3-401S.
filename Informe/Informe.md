@@ -606,14 +606,25 @@ Finalmente, los últimos bloques cierran el recorrido de ambas trayectorias, ret
 
 
 
----
-
 ## Conclusiones
 
+El desarrollo del laboratorio con el robot EPSON T3-401S permitió evidenciar de manera práctica la integración entre diseño mecánico, programación y control en una aplicación real de paletizado utilizando una trayectoria tipo caballo de ajedrez. La implementación del programa en lenguaje SPEL+ demostró que el uso de movimientos tipo `Jump`, junto con la activación y desactivación controlada de la ventosa mediante la salida digital `Out_9`, garantiza una secuencia ordenada, repetible y precisa para la manipulación de huevos, minimizando errores por posicionamiento y reduciendo riesgos de colisión.
 
+La definición explícita de todos los pares de puntos para las trayectorias P1 y P2.2 facilitó la comprensión del patrón geométrico y permitió un control total sobre el recorrido del robot, reforzando la importancia de una planificación detallada en aplicaciones de pick & place. Asimismo, el diseño mecánico del gripper, adaptado al acople metálico y a la ventosa, mostró ser adecuado en términos de rigidez, alineación y compatibilidad con la cubeta, contribuyendo a la estabilidad del proceso y a la correcta sujeción de los huevos.
+
+La comparación entre EPSON RC+ 7.0, RoboDK y RobotStudio evidenció las diferencias conceptuales entre un entorno de control directo y programación en línea (EPSON RC+), una plataforma multimarca de simulación y planificación (RoboDK) y una herramienta de simulación avanzada con controlador virtual (RobotStudio). En particular, EPSON RC+ resultó ser la herramienta más apropiada para la ejecución real del laboratorio, mientras que RobotStudio y RoboDK representan alternativas valiosas para análisis previo, validación y comparación de estrategias de programación.
+
+En conjunto, el laboratorio permitió comprender el flujo completo desde el diseño del efector final hasta la ejecución automatizada de la trayectoria, resaltando la importancia de la coherencia entre diseño mecánico, lógica de programación y configuración del software de control en sistemas robóticos industriales.
 
 ---
 
 ## Referencias
+
+- EPSON. *Manual técnico del robot SCARA EPSON T3-401S*. Seiko Epson Corporation.  
+- EPSON. *EPSON RC+ 7.0 User’s Guide and SPEL+ Programming Manual*. Seiko Epson Corporation.  
+- ABB Robotics. *RobotStudio Operator’s Manual*. ABB, 2020.  
+- Groover, M. P. *Automation, Production Systems, and Computer-Integrated Manufacturing*. Pearson Education.  
+- Craig, J. J. *Introduction to Robotics: Mechanics and Control*. Pearson Education.
+
 
 
