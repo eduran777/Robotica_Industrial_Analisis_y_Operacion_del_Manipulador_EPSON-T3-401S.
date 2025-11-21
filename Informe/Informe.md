@@ -38,7 +38,7 @@ Ana María Orozco Reyes
 | Aplicaciones típicas           | Soldadura, manipulación, dispensado | Manipulación, empaquetado, soldadura| Ensamble, pick & place, inspección |
 
 
-**Anlisis de robots:**
+###Anlisis de robots:
 
 Los tres robots evaluados presentan enfoques claramente diferenciados en función de su arquitectura mecánica, sus capacidades cinemáticas y el tipo de aplicación al que están orientados. El Motoman MH6 y el ABB IRB 140 corresponden a robots articulados de seis grados de libertad, lo que les confiere una elevada flexibilidad espacial y la posibilidad de ejecutar trayectorias complejas en entornos tridimensionales. Esto los hace especialmente adecuados para operaciones que requieren cambios de orientación continuos y acceso a múltiples planos de trabajo, como soldadura, manipulación de piezas y procesos de ensamblaje más exigentes. Entre ambos, el ABB IRB 140 destaca por su mayor repetibilidad y menor masa, lo que se traduce en mayor precisión y eficiencia en celdas compactas, mientras que el Motoman MH6 ofrece un mayor alcance, favoreciendo aplicaciones que requieren cubrir áreas de trabajo más amplias.
 
