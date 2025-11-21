@@ -400,20 +400,75 @@ EPSON RC+ 7.0 no se limita a ser un entorno de programación, sino que constituy
 | Característica | EPSON RC+ 7.0 | RoboDK | RobotStudio |
 |----------------|---------------|--------|-------------|
 | Fabricante | EPSON | Multimarca | ABB |
-| Tipo | Control directo + simulación | Simulación offline | Simulación avanzada con Virtual Controller |
-| Lenguaje | SPEL+ | Genera código nativo | RAPID |
-| Uso ideal | Aplicaciones industriales reales EPSON | Académico / Integración | Robótica ABB de alta fidelidad |
+| Tipo de herramienta | Control directo + simulación básica | Simulación y programación offline | Simulación avanzada con controlador virtual |
+| Lenguaje principal | SPEL+ | Generación de código nativo por marca | RAPID |
+| Relación con el hardware | Directa con controlador EPSON | Indirecta (exportación de código) | Directa mediante Virtual Controller |
+| Nivel de fidelidad respecto al robot real | Medio | Variable según post-procesador | Muy alto |
+| Enfoque | Operación y control en tiempo real | Integración y planificación multimarca | Programación y validación precisa ABB |
 
-**RobotStudio** permite modelado y simulación 3D avanzada, creación de trayectorias desde curvas, generación de código RAPID y pruebas de colisiones, proporcionando un entorno casi idéntico al controlador físico .
+---
 
-En contraste:
-- EPSON RC+ integra ejecución real y simulación básica en un solo entorno.
-- RoboDK se utiliza como marco comparativo entre marcas.
-- RobotStudio ofrece simulaciones precisas con controlador virtual.
+### EPSON RC+ 7.0
+
+EPSON RC+ 7.0 es el entorno oficial para configuración, programación y operación de robots EPSON, como el T3-401S. Está diseñado para trabajar de forma estrechamente integrada con el controlador físico, permitiendo no solo la edición y compilación de programas en lenguaje **SPEL+**, sino también la ejecución directa y monitoreo en tiempo real del manipulador.  
+
+Desde este entorno se realizan tareas críticas como:
+- Configuración de rangos de movimiento por pulsos y límites articulares.
+- Parametrización de peso e inercia del efector final.
+- Definición de modos de operación (AUTO, PROGRAM) y control del estado del robot.
+- Gestión de comunicación por USB o Ethernet, incluyendo carga y transferencia de programas, así como monitoreo de estados y alarmas del sistema.
+
+La principal fortaleza de EPSON RC+ radica en su enfoque hacia la implementación física real: el usuario enseña puntos, prueba trayectorias y ejecuta rutinas directamente sobre el robot, como en el caso del recorrido tipo caballo sobre la cubeta de huevos. Su simulación es funcional pero está orientada más al soporte de ejecución que a una recreación física compleja del entorno. 
+
+---
+
+### RoboDK
+
+RoboDK se posiciona como una plataforma de simulación y programación offline de carácter multimarca. A diferencia de EPSON RC+, no está ligada a un fabricante específico, sino que ofrece una biblioteca extensa de robots industriales y permite modelar celdas completas sin necesidad de acceso físico al manipulador.
+
+Sus capacidades incluyen:
+- Creación de estaciones virtuales con múltiples robots de diferentes marcas.
+- Simulación geométrica de trayectorias y verificación de alcances.
+- Generación automática de código en el lenguaje nativo de cada robot mediante post-procesadores.
+- Integración con CAD y planificación de procesos.
+
+RoboDK resulta especialmente útil en entornos académicos y de diseño conceptual, donde se requiere estudiar comparativamente el comportamiento de varios robots antes de definir la plataforma final. Sin embargo, su nivel de fidelidad depende del post-procesador y no replica completamente la lógica interna del controlador físico.
+
+---
+
+### RobotStudio (ABB)
+
+RobotStudio es la suite oficial de ABB para modelado, simulación y programación de robots industriales. Su característica más distintiva es la incorporación del **Virtual Controller**, que replica el software del controlador real, permitiendo que los programas RAPID se ejecuten en un entorno virtual con un comportamiento prácticamente idéntico al sistema físico.
+
+Entre sus funcionalidades avanzadas se destacan:
+- Creación de estaciones virtuales completas con robots, posicionadores y ejes externos.
+- Programación gráfica en entorno 3D y generación automática de código RAPID.
+- Detección y evitación de colisiones.
+- Simulación de señales de E/S y lógica de proceso.
+- Integración de componentes inteligentes y simulación física avanzada.
+- Puesta en servicio virtual antes de la implementación real.
+
+RobotStudio permite validar trayectorias y tiempos de ciclo con alta precisión, facilitando la optimización y reducción de riesgos antes de llevar el programa al robot físico. Este enfoque lo hace ideal para aplicaciones industriales donde se requiere máxima exactitud y coherencia con el comportamiento real del controlador ABB. 
+
+---
+
+### Comparación técnica integrada
+
+- **EPSON RC+ 7.0** está orientado al control operativo directo del robot EPSON, facilitando la programación, monitoreo y ejecución en tiempo real, con simulación funcional pero limitada en complejidad física.  
+- **RoboDK** actúa como un entorno neutral para diseño, análisis y comparación multimarca, ideal para planificación y enseñanza, aunque con menor realismo dinámico frente al hardware.  
+- **RobotStudio** ofrece el mayor nivel de fidelidad gracias al Virtual Controller, permitiendo validar programas y trayectorias con una representación casi exacta del comportamiento del robot ABB real.
+
+---
 
 ### Aplicación en el laboratorio
-- EPSON RC+ se encargó del control físico del T3-401S para la rutina tipo caballo.
-- RobotStudio y RoboDK sirvieron como referencia conceptual y comparativa para otros robots industriales.
+
+En el contexto del laboratorio:
+- **EPSON RC+ 7.0** fue utilizado para la implementación real del movimiento tipo caballo sobre la cubeta en el T3-401S, incluyendo enseñanza de puntos y ejecución directa.  
+- **RoboDK** sirvió como entorno conceptual de comparación para analizar posibles trayectorias y configuraciones en distintos robots.  
+- **RobotStudio** se empleó como referencia técnica avanzada para comprender los procesos de simulación de alta fidelidad aplicables al ABB IRB 140, especialmente en términos de validación previa y análisis de colisiones.
+
+Esta combinación permitió evaluar no solo el desempeño físico del robot EPSON, sino también las diferencias entre ecosistemas de programación industrial y simulación robótica profesional.
+
 
 ---
 
