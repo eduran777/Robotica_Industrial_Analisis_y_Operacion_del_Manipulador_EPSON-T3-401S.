@@ -492,6 +492,25 @@ Esta combinación permitió evaluar no solo el desempeño físico del robot EPSO
 ---
 
 ### 10. Plano de planta de la cubeta de huevos y posiciones iniciales
+<p align="center">
+  <img src="Imagenes/planodeplanta.jpg" alt="Plano de planta de UNAL" width="600"/>
+</p>
+<p align="center"><em>Plano de planta</em></p>
+
+<p align="center">
+  <img src="Imagenes/posicioninicial.jpg" alt="Plano de planta de UNAL" width="600"/>
+</p>
+<p align="center"><em>Posición inicial</em></p>
+
+<p align="center">
+  <img src="Imagenes/plano1 (1).jpg" alt="Plano de planta de UNAL" width="600"/>
+</p>
+<p align="center"><em>Plano de planta simulación</em></p>
+
+<p align="center">
+  <img src="Imagenes/plano1 (2).jpg" alt="Plano de planta de UNAL" width="600"/>
+</p>
+<p align="center"><em>Plano de planta simulación</em></p>
 
 
 
