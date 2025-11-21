@@ -401,7 +401,7 @@ EPSON RC+ 7.0 no se limita a ser un entorno de programación, sino que constituy
 |----------------|---------------|--------|-------------|
 | Fabricante | EPSON | Multimarca | ABB |
 | Tipo de herramienta | Control directo + simulación básica | Simulación y programación offline | Simulación avanzada con controlador virtual |
-| Lenguaje principal | SPEL+ | Generación de código nativo por marca | RAPID |
+| Lenguaje principal | SPEL+ | Python | RAPID |
 | Relación con el hardware | Directa con controlador EPSON | Indirecta (exportación de código) | Directa mediante Virtual Controller |
 | Nivel de fidelidad respecto al robot real | Medio | Variable según post-procesador | Muy alto |
 | Enfoque | Operación y control en tiempo real | Integración y planificación multimarca | Programación y validación precisa ABB |
