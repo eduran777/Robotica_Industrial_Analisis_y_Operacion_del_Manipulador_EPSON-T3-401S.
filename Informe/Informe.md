@@ -474,12 +474,70 @@ Esta combinación permitió evaluar no solo el desempeño físico del robot EPSO
 
 
 ### 8. Diseño técnico del gripper neumático por vacío
+
 <p align="center">
 <img src="Imagenes/gripperISO.jpeg" alt="UNAL" width="600"/>
 </p>
+Isometrico del diseño del gripper
 <p align="center">
 <img src="Imagenes/PlanoGripper.jpeg" alt="UNAL" width="600"/>
 </p>
+Plano del diseño del gripper
+
+### Descripción del diseño mecánico del gripper
+
+El elemento mostrado en las Figuras 1 y 2 corresponde al **soporte mecánico del gripper** que conecta el acople metálico del eje del EPSON T3-401S con la ventosa utilizada para la manipulación de los huevos (Figura 3). El diseño integra en una sola pieza:
+
+1. **Placa de sujeción al eje del robot**  
+2. **Brazo de transmisión**  
+3. **Zona de sujeción al acople cilíndrico**  
+4. **Superficie de montaje de la ventosa y los elementos neumáticos**
+
+De este modo se garantiza una alineación geométrica controlada entre el eje del robot, el acople metálico y la ventosa, manteniendo la rigidez necesaria y evitando interferencias con la cubeta de huevos.
+
+---
+
+### Elementos principales del diseño
+
+1. **Placa superior de montaje (57 × 57 mm, espesor 9 mm)**  
+   - Contiene un taladro central de Ø12,7 mm que sirve como **punto de fijación para la ventosa** o para el conjunto portaventosa.  
+   - La superficie plana proporciona una base estable para atornillar el cuerpo de latón del eyector/válvula neumática, tal como se aprecia en el montaje real.  
+   - Esta placa define el **plano de trabajo del TCP**, dejando la ventosa por debajo y centrada respecto al patrón de la cubeta.
+
+2. **Ala vertical o escuadra (52 × 23 mm)**  
+   - Genera una configuración tipo **“L” rígida**, incrementando el momento de inercia de la sección y reduciendo la flexión del brazo cuando la ventosa hace contacto con el huevo.  
+   - Incorpora dos taladros pasantes de Ø6,35 mm que permiten el **atornillado al acople metálico** del eje del robot, garantizando una unión firme y repetible.  
+   - Esta escuadra también facilita absorber pequeños desalineamientos entre el eje del robot y el plano de la ventosa sin comprometer la rigidez global.
+
+3. **Brazo intermedio (longitud total 112 mm)**  
+   - Une la zona de sujeción al acople con la zona de la ventosa, generando el **desplazamiento necesario para que la ventosa alcance la cubeta de huevos** sin que el cuerpo del robot interfiera.  
+   - Su sección mantiene el mismo espesor que la placa (9 mm), lo que ofrece un compromiso adecuado entre rigidez y masa reducida, particularmente importante para no penalizar la dinámica del T3-401S.
+
+4. **Zona de acople al eje/abrazadera (R8, ranura y taladro Ø6,5 mm)**  
+   - La parte frontal presenta un alojamiento circular de **radio 8 mm** con una ranura longitudinal que permite **funcionar como abrazadera** sobre el acople cilíndrico metálico.  
+   - El taladro transversal Ø6,5 mm, combinado con la ranura, permite que un tornillo de apriete genere una **pre-carga radial**, sujetando el acople sin necesidad de mecanizados complejos ni chavetas.  
+   - Esta solución facilita el **montaje y desmontaje rápido** del gripper y permite pequeños ajustes angulares para alinear la ventosa con la cubeta.
+
+---
+
+### Justificación del diseño
+
+- **Compatibilidad geométrica con el acople metálico y la ventosa**  
+  La combinación de la abrazadera cilíndrica en un extremo y la placa plana con taladro central en el otro permite una **transición directa entre el eje del robot y la ventosa**, minimizando tolerancias acumuladas y asegurando que el centro de la ventosa quede bien definido respecto al sistema de coordenadas herramienta.
+
+- **Rigidez con bajo peso**  
+  El uso de una escuadra y un brazo relativamente corto, con espesor constante de 9 mm, proporciona **suficiente rigidez frente a flexión y torsión**, evitando desplazamientos apreciables del TCP durante el contacto con los huevos, al tiempo que mantiene una masa adecuada para no afectar significativamente la capacidad de aceleración del SCARA.
+
+- **Evitar interferencias con la cubeta y el entorno**  
+  La longitud del brazo (112 mm) y la posición relativa de la placa permiten que la ventosa trabaje **por delante del acople y de la carcasa del robot**, reduciendo el riesgo de colisión con la cubeta de huevos y con las paredes de la celda de trabajo.
+
+- **Facilidad de fabricación y montaje**  
+  La pieza se basa en **volúmenes prismáticos simples** y taladros estándar, lo que la hace apta para impresión 3D o mecanizado básico. El uso de tornillería comercial (M6 aproximado para Ø6,35–6,5 mm) simplifica la integración con los componentes neumáticos y el acople metálico.
+
+- **Flexibilidad para ajustes y mantenimiento**  
+  El sistema de abrazadera permite desmontar el gripper sin intervenir el acople ni el eje del robot, facilitando el reemplazo de la ventosa o la modificación del diseño para otras tareas (por ejemplo, cambio de diámetro de ventosa o adaptación a otras piezas).
+
+En conjunto, el diseño mecánico del gripper responde a los requerimientos de **alineación precisa, rigidez, alcance adecuado y facilidad de montaje**, garantizando una manipulación confiable de los huevos en la celda de paletizado con el EPSON T3-401S.
 
 
 
