@@ -171,122 +171,159 @@ El movimiento manual del T3-401S se realiza principalmente desde el software **E
 
 ---
 
+## 4. Procedimiento detallado para movimientos manuales del EPSON T3-401S  
+*(articulaciones, cartesianos, traslaciones y rotaciones)*
+
+El movimiento manual del robot SCARA **EPSON T3-401S** se realiza desde el entorno **EPSON RC+ 7.0**, mediante el panel **Jog & Teach** o el panel de control físico cuando se habilita el modo de liberación de frenos en condiciones específicas.
+
+### 4.1 Condiciones previas
+1. Encender el controlador del manipulador y verificar ausencia de alarmas.
+2. Conectar EPSON RC+ con el controlador y confirmar estado **ONLINE**.
+3. Activar servomotores desde *Tools → Robot Manager → Control Panel*.
+4. Confirmar que el manipulador se encuentre fuera de colisiones.
+
+### 4.2 Modos de movimiento manual
+
+En el panel **Jog & Teach** se habilitan los siguientes sistemas de referencia:
+
+| Modo | Descripción técnica |
+|------|----------------------|
+| Joint | Control individual de articulaciones J1, J2, J3 (Z) y J4 (U). |
+| World/Base | Movimiento cartesiano respecto al sistema de coordenadas base. |
+| Tool | Movimiento cartesiano respecto al TCP de la herramienta. |
+| User/Local | Sistema definido por el usuario, útil para marcos de trabajo como la cubeta. |
+
+### 4.3 Movimiento por articulaciones
+En modo **Joint**, se manipulan directamente los ejes:
+- J1 y J2: rotacionales horizontales.
+- J3: desplazamiento vertical (requiere liberación de freno si es manual).
+- J4: rotación del efector final.
+
+Durante movimientos sin servo, la articulación 3 requiere presionar el interruptor de desbloqueo de freno para permitir desplazamiento vertical seguro .
+
+### 4.4 Movimiento cartesiano
+En modos **World** y **Tool** se habilitan:
+- Traslaciones lineales: +X, -X, +Y, -Y, +Z, -Z.
+- Rotaciones: Rx, Ry y principalmente Rz (equivalente a eje U en SCARA).
+
+El tipo de movimiento puede ser PTP o CP, dependiendo si el robot interpola punto a punto o trayectoria continua, respectivamente .
+
+---
+
 ### 5. Explicación de los niveles de velocidad para movimientos manuales, cambio entre niveles e identificación en la interfaz
 
-En EPSON RC+ 7.0 la velocidad de jog del robot se controla mediante el parámetro **Jog Speed** del panel *Jog*, que define la rapidez con la que el T3-401S se mueve en modo manual.  
+En el EPSON T3-401S, operado mediante **EPSON RC+ 7.0**, la velocidad de los movimientos manuales (jogging) se controla desde el panel **Mover y enseñar (Jog & Teach)** a través del parámetro **Velocidad**, el cual dispone exclusivamente de **dos niveles predefinidos**:
 
-**a) Concepto de Jog Speed**
+- **Baja**
+- **Alta**
 
-- Representa un **porcentaje de la velocidad máxima de jogging** o un valor en unidades lineales (mm/s) y angulares (°/s), dependiendo de la configuración del controlador.  
-- Afecta únicamente los movimientos manuales (Jog & Teach), no las velocidades programadas en los comandos SPEL+ del programa.
-
-**b) Niveles de velocidad**
-
-En la práctica de laboratorio se suelen manejar tres rangos lógicos:
-
-- **Baja** → valores de Jog Speed entre ~5 % y 20 %.  
-  - Uso: aproximaciones a la pieza, zonas cercanas a obstáculos, enseñanza fina de puntos.
-- **Media** → valores entre ~20 % y 60 %.  
-  - Uso: desplazamientos moderados dentro de la celda con visibilidad del robot.
-- **Alta** → valores superiores al 60 % (hasta el 100 % permitido).  
-  - Uso: movimientos amplios entre zonas seguras o retorno rápido a *home*.
-
-**c) Cambio de velocidad**
-
-- En el panel **Jog & Teach**, en el cuadro **Jog Speed**, se selecciona el valor mediante:
-  - Una lista desplegable de velocidades predefinidas.  
-  - O escribiendo directamente un valor numérico (porcentaje o velocidad absoluta).  
-- Adicionalmente, es posible cambiar distancia y modo de desplazamiento con las opciones **Jog Distance** (`Short`, `Medium`, `Long`, `Continuous`), que combinadas con Jog Speed permiten un control más fino del movimiento manual.
-
-**d) Identificación en la interfaz**
-
-- El valor activo de **Jog Speed** se muestra de forma permanente en el panel de jogging y, en algunas configuraciones, en la barra de estado del proyecto.  
-- Cuando se modifica el valor, el cambio se refleja inmediatamente en la etiqueta de velocidad, indicando al operador el porcentaje actual antes de mover el robot.
-
-**e) Recomendaciones de seguridad**
-
-- Utilizar **velocidades bajas** al enseñar puntos sobre la cubeta de huevos o cerca de personas.  
-- No usar velocidad alta durante la primera prueba de una trayectoria nueva.  
-- Verificar siempre el sentido de movimiento antes de mantener pulsado un botón de jogging en modo continuo.
+Estos niveles se seleccionan mediante un menú desplegable visible en la interfaz, tal como se muestra en el teach pendant virtual del software.
 
 ---
 
-### 6. Descripción de las principales funcionalidades de EPSON RC+ 7.0 y su comunicación con el manipulador
+#### a) Niveles de velocidad disponibles
 
-**EPSON RC+ 7.0** es el entorno de desarrollo y operación para los controladores de robots EPSON (incluyendo la serie T). Permite programar, simular y monitorear aplicaciones robóticas desde un PC con Windows.  
+| Nivel de velocidad | Descripción técnica | Uso recomendado |
+|--------------------|----------------------|-----------------|
+| **Baja** | Movimiento lento y controlado, con alta precisión y respuesta progresiva. | Enseñanza de puntos, aproximaciones finas, trabajo cercano a piezas u obstáculos. |
+| **Alta** | Movimiento rápido dentro del rango seguro definido por el sistema. | Desplazamientos amplios, retorno a HOME y reposicionamientos generales. |
 
-**a) Funcionalidades principales**
-
-1. **Entorno de programación SPEL+**
-   - Editor de código con resaltado de sintaxis, ayuda integrada y comprobación de errores.  
-   - Compilador y depurador para ejecutar programas paso a paso, con puntos de ruptura y visualización de variables.  
-
-2. **Gestión de proyectos y robots**
-   - Definición de proyectos que agrupan programas, puntos, variables y configuraciones del robot.  
-   - Conexión a uno o varios controladores, gestión de backups y restauración de configuraciones.  
-
-3. **Jog & Teach / Simulación básica**
-   - Panel gráfico para mover el robot manualmente (Jog) y enseñar puntos de trabajo.  
-   - Vista 3D para verificar el movimiento del robot y chequear alcances y posibles colisiones de forma básica.
-
-4. **Simulador 3D y programación offline**  
-   - Permite probar programas SPEL+ sin necesidad de ejecutar el robot físico, reduciendo tiempos de parada y riesgos durante el desarrollo.  
-
-5. **Integración con opciones avanzadas**
-   - Módulos para visión artificial, GUI Builder, PLC Function Blocks, Fieldbus I/O, etc., que permiten integrar cámaras, PLCs y HMIs al sistema robótico.  
-
-**b) Comunicación con el manipulador**
-
-- El controlador del T3-401S incorpora la electrónica de potencia y control, y se conecta al PC mediante enlace Ethernet o USB, según la configuración de la celda.  
-- EPSON RC+ 7.0 establece una sesión de comunicación con el controlador, a través de la cual:
-  1. **Descarga y carga programas SPEL+** (transferencia de código).  
-  2. **Envía comandos de ejecución** (`Start`, `Stop`, `Reset`) indicando cuál función `main` debe ejecutarse.  
-  3. **Lee y escribe variables, estados y E/S digitales**, permitiendo sincronizar el robot con sensores, válvulas del gripper y otros dispositivos externos.  
-  4. **Monitorea alarmas y estado del sistema** (errores, límites, emergencias).
-
-Durante la ejecución de una trayectoria (por ejemplo, el recorrido tipo caballo sobre la cubeta), EPSON RC+ 7.0 envía al controlador la secuencia de puntos y velocidades ya compilada; el controlador se encarga de interpolar los movimientos, respetar límites articulares y gestionar el perfil de velocidad del T3-401S.
+Estos niveles están definidos internamente por el controlador del robot y no pueden subdividirse en más escalones desde la interfaz estándar del usuario.
 
 ---
 
-### 7. Análisis comparativo entre EPSON RC+ 7.0, RoboDK y RobotStudio
+#### b) Cambio entre niveles
 
-**EPSON RC+ 7.0**, **RoboDK** y **RobotStudio** son herramientas relacionadas con programación y simulación de robots, pero con enfoques diferentes:
+El operador puede alternar entre **Baja** y **Alta** directamente desde el panel *Mover y enseñar*:
 
-#### a) EPSON RC+ 7.0
+1. Ubicar el menú desplegable **Velocidad**.
+2. Seleccionar el nivel deseado:
+   - `Baja` para movimientos precisos.
+   - `Alta` para movimientos rápidos.
+3. El cambio se aplica de inmediato al presionar cualquier botón de jogging (+X, -Y, +Z, etc.).
 
-- Software oficial de EPSON, ligado a sus controladores.  
-- Combina programación, depuración y operación directa del robot en un solo entorno.  
-- Ideal para:
-  - Celdas donde el hardware es exclusivamente EPSON.  
-  - Desarrollo de aplicaciones reales con el T3-401S (paletizado de huevos, pick & place, etc.).  
-
-#### b) RoboDK
-
-- Plataforma de **simulación y programación offline multimarca**, con una gran librería de robots de distintos fabricantes.  
-- Permite:
-  - Simular celdas con varios robots de marcas diferentes.  
-  - Generar código en los lenguajes nativos de cada fabricante.  
-- Muy usada en entornos académicos y de integración, donde se comparan distintos robots y se trabaja sin acceso directo al hardware.
-
-#### c) RobotStudio (ABB)
-
-- Software oficial de ABB para simulación y programación offline de sus robots.  
-- Incluye un **Virtual Controller**, que es una copia del software real del controlador, permitiendo simulaciones casi idénticas al comportamiento real.  
-- Ideal para:
-  - Empresas que usan exclusivamente robots ABB (como el IRB 140).  
-  - Validar programas RAPID antes de descargarlos al robot.
-
-#### d) Interpretación general
-
-- **EPSON RC+ 7.0** es la herramienta más cercana al **control directo** del T3-401S: permite programar, simular y ejecutar en el mismo ambiente, pero está limitada a robots EPSON.  
-- **RoboDK** funciona como un “laboratorio virtual multimarca”; es muy útil para comparar el comportamiento del Motoman MH6, el ABB IRB 140 y el EPSON T3-401S dentro de una misma escena y generar código para cada uno.  
-- **RobotStudio** es una suite especializada y muy precisa para robots ABB, complementando a EPSON RC+ y RoboDK cuando se trabaja con el IRB 140 y se requiere un modelo de controlador idéntico al real.  
-
-En conjunto, en el contexto del laboratorio:
-- **EPSON RC+ 7.0** se usa para implementar la trayectoria real en el T3-401S.  
-- **RoboDK** y **RobotStudio** permiten comparar estrategias de simulación y programación para Motoman y ABB, y sirven como referencia para entender ventajas y limitaciones de cada ecosistema.
+Este selector actúa únicamente sobre los movimientos manuales y no altera las velocidades programadas dentro del código SPEL+.
 
 ---
+
+#### c) Relación con la distancia de movimiento
+
+El comportamiento del jog se complementa además con la opción **Distancia de movimiento**, que permite seleccionar:
+
+- **Continuo**
+- **Largo**
+- **Medio**
+- **Corto**
+
+La combinación de:
+- Nivel de velocidad (Baja / Alta)  
+- Tipo de distancia (Continuo / Largo / Medio / Corto)
+
+permite un control preciso del desplazamiento manual sin necesidad de múltiples escalones de velocidad.
+
+---
+
+#### d) Identificación en la interfaz
+
+El nivel activo de velocidad se visualiza claramente en el panel mediante el texto:
+
+- `Velocidad: Baja`  
+- `Velocidad: Alta`
+
+Este indicador se mantiene visible en todo momento, evitando ambigüedad para el operador durante la enseñanza de puntos o movimientos de posicionamiento.
+
+---
+
+#### e) Recomendaciones de seguridad
+
+- Utilizar siempre **velocidad Baja** al enseñar puntos dentro de la cubeta o cerca de personas.  
+- Usar **velocidad Alta** únicamente en trayectorias despejadas y verificadas.  
+- Cambiar a Baja antes de realizar ajustes finos o correcciones de posición.
+
+En conclusión, el sistema de jogging del EPSON T3-401S prioriza la simplicidad y la seguridad operativa al limitar los niveles de velocidad manual a dos estados claramente definidos, facilitando la toma de decisiones del operador y reduciendo riesgos durante la enseñanza.
+
+---
+
+## 6. Funcionalidades principales de EPSON RC+ 7.0 y su comunicación
+
+### 6.1 EPSON RC+ 7.0
+
+Funciones clave:
+- Editor y compilador SPEL+ con control multitarea.
+- Panel Jog & Teach con vista gráfica integrada.
+- Simulación básica de trayectorias.
+- Gestión de proyectos, I/O y monitoreo de estados.
+
+El software se comunica con el controlador vía USB o Ethernet permitiendo:
+- Transferencia de programas SPEL+.
+- Comandos Start/Stop/Reset.
+- Monitoreo de variables y estados.
+- Gestión de errores y protección de seguridad .
+
+---
+
+## 7. Análisis comparativo: EPSON RC+ 7.0 vs RoboDK vs RobotStudio
+
+| Característica | EPSON RC+ 7.0 | RoboDK | RobotStudio |
+|----------------|---------------|--------|-------------|
+| Fabricante | EPSON | Multimarca | ABB |
+| Tipo | Control directo + simulación | Simulación offline | Simulación avanzada con Virtual Controller |
+| Lenguaje | SPEL+ | Genera código nativo | RAPID |
+| Uso ideal | Aplicaciones industriales reales EPSON | Académico / Integración | Robótica ABB de alta fidelidad |
+
+**RobotStudio** permite modelado y simulación 3D avanzada, creación de trayectorias desde curvas, generación de código RAPID y pruebas de colisiones, proporcionando un entorno casi idéntico al controlador físico .
+
+En contraste:
+- EPSON RC+ integra ejecución real y simulación básica en un solo entorno.
+- RoboDK se utiliza como marco comparativo entre marcas.
+- RobotStudio ofrece simulaciones precisas con controlador virtual.
+
+### Aplicación en el laboratorio
+- EPSON RC+ se encargó del control físico del T3-401S para la rutina tipo caballo.
+- RobotStudio y RoboDK sirvieron como referencia conceptual y comparativa para otros robots industriales.
+
+---
+
 
 ### 8. Diseño técnico del gripper neumático por vacío
 
