@@ -119,11 +119,6 @@ Esta configuración genera una postura más equilibrada del SCARA, mejorando la 
 
 ---
 
-Ambas posiciones *home* fueron registradas desde EPSON RC+ 7.0 mediante el desplazamiento manual del robot y el uso de la opción **Teach Point** en el panel *Jog & Teach*, asignando nombres identificables para su uso dentro del programa de control.
-
-
----
-
 ### 4. Procedimiento detallado para realizar movimientos manuales del EPSON T3-401S (articulaciones, cartesianos, traslaciones y rotaciones)
 
 El movimiento manual del T3-401S se realiza principalmente desde el software **EPSON RC+ 7.0**, utilizando el panel **Jog & Teach** o, si está disponible, un *teach pendant* TP2.  
