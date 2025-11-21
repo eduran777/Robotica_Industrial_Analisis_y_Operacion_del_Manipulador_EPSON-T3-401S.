@@ -73,7 +73,6 @@ En conclusión, la selección del tipo de trayectoria debe realizarse consideran
 
 
 
-
 ---
 
 ### 3. Descripción de las configuraciones *home* del EPSON T3-401S, indicando la posición de cada articulación
@@ -86,21 +85,42 @@ En el laboratorio se utilizó el EPSON T3-401S como robot SCARA de 4 ejes:
 
 En EPSON RC+ 7.0 las posiciones *home* se definen como puntos de referencia enseñados (por ejemplo `HOME` o `P_HOME`) y almacenados en la controladora. De forma general:
 
-- **HOME de referencia (Home mecánico / seguro):**  
-  - J1 ≈ 0° → brazo alineado hacia el frente de la celda.  
-  - J2 ≈ 0° → eslabones extendidos en línea recta.  
-  - J3 en posición alta segura (por encima de la cubeta y elementos de la mesa).  
-  - J4 ≈ 0° → orientación “neutra” del efector, alineado con el eje X del robot.  
-  Esta posición se usa como punto de **inicio y fin** de la rutina, así como referencia para calibrar sistemas de coordenadas y verificar que no existan colisiones.
+---
+#### HOME de referencia (Home mecánico / seguro)
 
-- **HOME de trabajo (si se define uno adicional):**  
-  Puede configurarse un segundo punto *home* más cercano a la cubeta de huevos, con:  
-  - J1 y J2 orientados hacia el área de trabajo principal.  
-  - J3 a una altura intermedia que reduzca el tiempo de aproximación.  
-  - J4 orientado de forma que la ventosa quede alineada con el eje de la cubeta.  
-  Esta posición facilita el acceso rápido a las posiciones de paletizado sin comprometer la seguridad.
+- J1 ≈ 0° → brazo alineado hacia el frente de la celda.  
+- J2 ≈ 0° → eslabones extendidos en línea recta.  
+- J3 en posición alta segura (por encima de la cubeta y elementos de la mesa).  
+- J4 ≈ 0° → orientación neutra del efector, alineado con el eje X del robot.  
 
-En ambos casos, las posiciones se registran desde EPSON RC+ 7.0 moviendo el robot manualmente al punto deseado y usando la opción de **Teach Point** en el panel *Jog & Teach* para guardar el punto con un nombre identificable en el programa.  
+Esta posición se utiliza como punto de **inicio y fin** de la rutina, así como referencia para calibración, comprobación de límites y verificación de condiciones seguras antes de iniciar cualquier movimiento automático.
+
+---
+
+#### HOME de trabajo (home operativo)
+
+Se definió un segundo punto *home* cercano al área de paletizado, con el objetivo de optimizar los tiempos de ciclo y mejorar la eficiencia de los movimientos. Este *home* se configuró de manera estratégica colocando la primera articulación en la mitad aproximada de su rango de movimiento, obteniendo una orientación natural del robot hacia el eje **Y** de la celda de trabajo.
+
+Las posiciones específicas configuradas en EPSON RC+ para este HOME de trabajo fueron:
+
+- **J1 = 204800 pulsos de codificador**  
+  Corresponde a una posición intermedia del eje base, orientando el robot directamente hacia la zona frontal de la cubeta, logrando una distribución simétrica del alcance y reduciendo desplazamientos angulares extremos.
+
+- **J2 = 0 pulsos**  
+  Mantiene el segundo brazo en una posición neutra, facilitando el acceso al área central de trabajo.
+
+- **J3 = 0 pulsos**  
+  Define la altura de referencia desde la cual el robot inicia los movimientos de aproximación vertical.
+
+- **J4 = 0 pulsos**  
+  Establece la orientación del efector final alineada con la geometría principal de la cubeta.
+
+Esta configuración genera una postura más equilibrada del SCARA, mejorando la cinemática general del sistema y reduciendo el esfuerzo mecánico durante la ejecución continua de trayectorias tipo paletizado. Además, favorece una transición más fluida entre puntos de trabajo, disminuyendo tiempos muertos y elevando la eficiencia del ciclo operativo.
+
+---
+
+Ambas posiciones *home* fueron registradas desde EPSON RC+ 7.0 mediante el desplazamiento manual del robot y el uso de la opción **Teach Point** en el panel *Jog & Teach*, asignando nombres identificables para su uso dentro del programa de control.
+
 
 ---
 
