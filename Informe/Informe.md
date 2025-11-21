@@ -37,13 +37,21 @@ Ana María Orozco Reyes
 | Montaje típico                 | Piso, pared, techo                  | Piso, invertido o pared             | Mesa / celda compacta              |
 | Aplicaciones típicas           | Soldadura, manipulación, dispensado | Manipulación, empaquetado, soldadura| Ensamble, pick & place, inspección |
 
-**Comentario general:**  
-- Motoman MH6 e IRB 140 son brazos articulados de 6 gdl y 6 kg de carga, pensados para tareas de alcance medio y alta flexibilidad.  
-- El EPSON T3-401S es un SCARA de 4 gdl, con menor carga (3 kg) y alcance, pero con mayor repetibilidad y tiempos de ciclo muy bajos, lo que lo hace ideal para operaciones rápidas de ensamblaje y manipulación ligera dentro de una celda compacta.  
+
+**Anlisis de robots:**
+
+Los tres robots evaluados presentan enfoques claramente diferenciados en función de su arquitectura mecánica, sus capacidades cinemáticas y el tipo de aplicación al que están orientados. El Motoman MH6 y el ABB IRB 140 corresponden a robots articulados de seis grados de libertad, lo que les confiere una elevada flexibilidad espacial y la posibilidad de ejecutar trayectorias complejas en entornos tridimensionales. Esto los hace especialmente adecuados para operaciones que requieren cambios de orientación continuos y acceso a múltiples planos de trabajo, como soldadura, manipulación de piezas y procesos de ensamblaje más exigentes. Entre ambos, el ABB IRB 140 destaca por su mayor repetibilidad y menor masa, lo que se traduce en mayor precisión y eficiencia en celdas compactas, mientras que el Motoman MH6 ofrece un mayor alcance, favoreciendo aplicaciones que requieren cubrir áreas de trabajo más amplias.
+
+En contraste, el EPSON T3-401S, al ser un robot tipo SCARA con cuatro grados de libertad, está optimizado para movimientos planos rápidos y altamente repetitivos. Su diseño prioriza la velocidad y la precisión en tareas de corto alcance, como el pick & place y el ensamblaje ligero, donde la repetibilidad y los tiempos de ciclo resultan críticos. Si bien presenta limitaciones en comparación con los robots articulados en términos de flexibilidad espacial y capacidad de carga, su desempeño es superior en aplicaciones de alta cadencia dentro de celdas compactas. En conjunto, la comparación evidencia cómo cada robot responde a necesidades industriales específicas, reafirmando que la selección óptima depende del equilibrio requerido entre alcance, precisión, velocidad y complejidad de movimiento.
+
+---
+### 2. Cuadro comparativo de características técnicas del Motoman MH6, ABB IRB 140 y EPSON T3-401S
+
+
 
 ---
 
-### 2. Descripción de las configuraciones *home* del EPSON T3-401S, indicando la posición de cada articulación
+### 3. Descripción de las configuraciones *home* del EPSON T3-401S, indicando la posición de cada articulación
 
 En el laboratorio se utilizó el EPSON T3-401S como robot SCARA de 4 ejes:  
 - **J1 (eje de base)**  
@@ -71,7 +79,7 @@ En ambos casos, las posiciones se registran desde EPSON RC+ 7.0 moviendo el robo
 
 ---
 
-### 3. Procedimiento detallado para realizar movimientos manuales del EPSON T3-401S (articulaciones, cartesianos, traslaciones y rotaciones)
+### 4. Procedimiento detallado para realizar movimientos manuales del EPSON T3-401S (articulaciones, cartesianos, traslaciones y rotaciones)
 
 El movimiento manual del T3-401S se realiza principalmente desde el software **EPSON RC+ 7.0**, utilizando el panel **Jog & Teach** o, si está disponible, un *teach pendant* TP2.  
 
@@ -123,7 +131,7 @@ El movimiento manual del T3-401S se realiza principalmente desde el software **E
 
 ---
 
-### 4. Explicación de los niveles de velocidad para movimientos manuales, cambio entre niveles e identificación en la interfaz
+### 5. Explicación de los niveles de velocidad para movimientos manuales, cambio entre niveles e identificación en la interfaz
 
 En EPSON RC+ 7.0 la velocidad de jog del robot se controla mediante el parámetro **Jog Speed** del panel *Jog*, que define la rapidez con la que el T3-401S se mueve en modo manual.  
 
@@ -163,7 +171,7 @@ En la práctica de laboratorio se suelen manejar tres rangos lógicos:
 
 ---
 
-### 5. Descripción de las principales funcionalidades de EPSON RC+ 7.0 y su comunicación con el manipulador
+### 6. Descripción de las principales funcionalidades de EPSON RC+ 7.0 y su comunicación con el manipulador
 
 **EPSON RC+ 7.0** es el entorno de desarrollo y operación para los controladores de robots EPSON (incluyendo la serie T). Permite programar, simular y monitorear aplicaciones robóticas desde un PC con Windows.  
 
@@ -200,7 +208,7 @@ Durante la ejecución de una trayectoria (por ejemplo, el recorrido tipo caballo
 
 ---
 
-### 6. Análisis comparativo entre EPSON RC+ 7.0, RoboDK y RobotStudio
+### 7. Análisis comparativo entre EPSON RC+ 7.0, RoboDK y RobotStudio
 
 **EPSON RC+ 7.0**, **RoboDK** y **RobotStudio** son herramientas relacionadas con programación y simulación de robots, pero con enfoques diferentes:
 
@@ -240,31 +248,31 @@ En conjunto, en el contexto del laboratorio:
 
 ---
 
-### 7. Diseño técnico del gripper neumático por vacío
+### 8. Diseño técnico del gripper neumático por vacío
 
 
 
 ---
 
-### 8. Diagrama de flujo de la rutina de movimiento de huevos (patrón de caballo)
+### 9. Diagrama de flujo de la rutina de movimiento de huevos (patrón de caballo)
 
 
 
 ---
 
-### 9. Plano de planta de la cubeta de huevos y posiciones iniciales
+### 10. Plano de planta de la cubeta de huevos y posiciones iniciales
 
 
 
 ---
 
-### 10. Código desarrollado en EPSON RC+ 7.0 (anexo)
+### 11. Código desarrollado en EPSON RC+ 7.0 (anexo)
 
 
 
 ---
 
-### 11. Video de simulación e implementación física
+### 12. Video de simulación e implementación física
 
 
 
