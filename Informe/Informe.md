@@ -575,6 +575,16 @@ En conjunto, el diseño mecánico del gripper responde a los requerimientos de *
 
 Las posiciones iniciales mostradas anteriormente se eligieron teniendo en cuenta los límites de movimiento del robot, de manera que no resultaran errores al realizar la operación en físico. Esta selección consideró tanto el alcance máximo de cada articulación como las posibles interferencias con el entorno o con otros elementos de la máquina. De esta manera, se asegura que el robot pueda ejecutar la secuencia de movimientos planificada de forma precisa y confiable, reduciendo riesgos durante la puesta en marcha.
 
+<p align="center">
+  <img src="Imagenes/puntos.png" alt="Plano de planta de UNAL" width="600"/>
+</p>
+
+
+<p align="center">
+  <img src="Imagenes/punto2.png" alt="Plano de planta de UNAL" width="600"/>
+</p>
+<p align="center"><em>Puntos usados en la implementación</em></p>
+
 
 ---
 
