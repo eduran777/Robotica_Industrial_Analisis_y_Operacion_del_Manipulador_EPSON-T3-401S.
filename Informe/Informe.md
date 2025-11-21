@@ -284,21 +284,114 @@ En conclusión, el sistema de jogging del EPSON T3-401S prioriza la simplicidad 
 
 ---
 
-## 6. Funcionalidades principales de EPSON RC+ 7.0 y su comunicación
+## 6. Funcionalidades principales de EPSON RC+ 7.0 y su comunicación con el manipulador
 
 ### 6.1 EPSON RC+ 7.0
 
-Funciones clave:
-- Editor y compilador SPEL+ con control multitarea.
-- Panel Jog & Teach con vista gráfica integrada.
-- Simulación básica de trayectorias.
-- Gestión de proyectos, I/O y monitoreo de estados.
+EPSON RC+ 7.0 constituye el entorno integral de desarrollo, configuración y operación para los robots industriales EPSON, incluyendo el modelo T3-401S. Este software no solo actúa como plataforma de programación, sino también como interfaz directa entre el operador y el controlador del manipulador, permitiendo el control completo del ciclo de vida de la aplicación robótica.
 
-El software se comunica con el controlador vía USB o Ethernet permitiendo:
-- Transferencia de programas SPEL+.
-- Comandos Start/Stop/Reset.
-- Monitoreo de variables y estados.
-- Gestión de errores y protección de seguridad .
+---
+
+### 6.1.1 Entorno de programación y control SPEL+
+
+EPSON RC+ integra el lenguaje nativo **SPEL+**, descrito en la documentación como un lenguaje multitarea orientado específicamente al control de robots industriales. Este entorno permite:
+
+- Programación estructurada de rutinas robóticas con control de tareas paralelas.
+- Ejecución en modo paso a paso y depuración con monitoreo de variables.
+- Control simultáneo de hasta 4 articulaciones mediante servocontrol digital de CA.
+- Implementación de movimientos PTP (punto a punto) y CP (trayectoria continua). 
+
+Los perfiles de velocidad y aceleración pueden ser programados en rangos configurables entre 1 y 100 %, y para movimientos continuos en valores reales definidos manualmente por el usuario. 
+
+---
+
+### 6.1.2 Panel Jog & Teach y control manual
+
+Desde EPSON RC+ se accede al panel gráfico **Jog & Teach**, que permite:
+
+- Movimiento manual por articulaciones o coordenadas cartesianas.
+- Enseñanza y registro de posiciones mediante función Teach.
+- Visualización en tiempo real de posición, orientación y estado del brazo.
+- Control de velocidad de jogging con niveles predefinidos.
+
+Este panel actúa como un teach pendant virtual completo, facilitando operaciones de ajuste fino, calibración y enseñanza segura.
+
+---
+
+### 6.1.3 Gestión de entradas y salidas (E/S)
+
+El sistema RC+ permite una integración avanzada con dispositivos externos mediante E/S estándar y remotas:
+
+- **Entradas:** 18 puntos estándar.
+- **Salidas:** 12 puntos estándar.
+- Capacidad de control remoto para funciones como Start, Stop, Reset y Pause.
+- Señales de estado como Ready, Running, Error y SafeguardOn. 
+
+Estas señales permiten sincronizar el movimiento del robot con sistemas neumáticos, sensores, válvulas y PLCs, generando un sistema automatizado completo.
+
+---
+
+### 6.1.4 Control y monitoreo de alarmas
+
+EPSON RC+ ofrece un módulo específico para la gestión y monitoreo de alarmas del manipulador, accesible desde el menú:
+
+Tools → Maintenance → Controller Tools
+
+Desde este módulo se puede:
+
+- Supervisar el estado de desgaste de partes críticas.
+- Programar alarmas relacionadas con vida útil de componentes.
+- Visualizar advertencias cuando se alcanza el límite operativo de piezas. 
+
+Además, las alarmas no pueden ser eliminadas simplemente reiniciando el controlador, siendo necesario un procedimiento específico desde el panel de mantenimiento para su cancelación. 
+
+---
+
+### 6.1.5 Función de copia de seguridad y restauración
+
+EPSON RC+ incorpora la función **Backup Controller**, que permite:
+
+- Almacenar la configuración completa del controlador.
+- Respaldar parámetros del manipulador, programas y ajustes de sistema.
+- Restaurar configuraciones en casos de fallos o reemplazo de hardware. 
+
+Esta función resulta crítica para garantizar la continuidad operativa y la protección de la configuración ante eventos inesperados.
+
+---
+
+### 6.1.6 Configuración del sistema remoto
+
+El software permite configurar parámetros avanzados de control remoto:
+
+- Control de condiciones como MotorsOn, PowerHigh, AtHome.
+- Selección de condiciones mediante señales SelRobot.
+- Monitoreo de estado persistente hasta reinicio del controlador. 
+
+Esto habilita integraciones complejas con sistemas externos de automatización industrial.
+
+---
+
+## 6.2 Comunicación entre EPSON RC+ 7.0 y el manipulador
+
+La comunicación entre el PC y el controlador del T3-401S se realiza mediante conexión física (USB o Ethernet), estableciendo una interfaz bidireccional que permite:
+
+1. Transferencia y compilación de programas SPEL+.
+2. Envío de comandos operativos: Start, Stop, Reset.
+3. Supervisión en tiempo real de estados, alarmas y variables.
+4. Recepción de señales de sensores externos.
+5. Control preciso de perfiles de velocidad, aceleración y movimiento.
+
+Una vez compilado el programa, este es ejecutado por el controlador interno, el cual se encarga de:
+
+- Interpolación de trayectorias PTP y CP.
+- Gestión del servocontrol de cada eje.
+- Monitoreo de límites articulares y protección de seguridad.
+
+---
+
+### Síntesis técnica
+
+EPSON RC+ 7.0 no se limita a ser un entorno de programación, sino que constituye una plataforma completa de supervisión, control, diagnóstico, mantenimiento y respaldo del sistema robótico. Su integración directa con el controlador del T3-401S permite una coordinación precisa entre software y hardware, asegurando eficiencia operativa, alta confiabilidad y trazabilidad del estado del sistema en tiempo real.
 
 ---
 
