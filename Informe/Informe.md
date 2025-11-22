@@ -606,7 +606,8 @@ Finalmente, los últimos bloques cierran el recorrido de ambas trayectorias, ret
 ---
 
 ### 12. Video de simulación e implementación física
-
+#### Link: 
+[https://drive.google.com/file/d/149Muef866Bs2dT7GcIG9fq91L3AHI_Tv/view?usp=sharing](https://drive.google.com/file/d/149Muef866Bs2dT7GcIG9fq91L3AHI_Tv/view?usp=sharing)
 
 
 ## Conclusiones
